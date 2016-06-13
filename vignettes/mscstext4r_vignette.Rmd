@@ -164,7 +164,7 @@ operating in sleep mode, you *WILL NOT* be able to use the console before the
 function completes. If you need to operate the console while topic detection is
 being performed by the Microsoft Cognitive services servers, you should call
 `textaDetectTopics()` in asynchronous mode and then call
-`textaDetectTopicsStatus()` yourself repeteadly afterwards, until results are
+`textaDetectTopicsStatus()` yourself repeatedly afterwards, until results are
 available.
 
 ## Package Configuration with Error Handling
