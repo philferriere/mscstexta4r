@@ -1,19 +1,24 @@
-# {mscstexta4r}
-Phil Ferriere  
-June 2016  
-
-[![Build Status](https://api.travis-ci.org/philferriere/mscstexta4r.png)](https://travis-ci.org/philferriere/mscstexta4r)
-[![codecov.io](https://codecov.io/github/philferriere/mscstexta4r/coverage.svg?branch=master)](https://codecov.io/github/philferriere/mscstexta4r?branch=master)
-[![CRAN Version](http://www.r-pkg.org/badges/version/mscstexta4r)](https://cran.r-project.org/package=mscstexta4r)
-
-[Microsoft Cognitive Services](https://www.microsoft.com/cognitive-services/en-us/documentation)
--- formerly known as Project Oxford -- are a set of APIs, SDKs and services
-that developers can use to add [AI](https://en.wikipedia.org/wiki/Artificial_intelligence)
-features to their apps. Those features include emotion and video detection;
-facial, speech and vision recognition; and speech and natural language
-processing ([NLP](https://en.wikipedia.org/wiki/Natural_language_processing)).
-
-> Note: A test/demo Shiny web application is available [here](https://github.com/philferriere/mscsshiny).
+---
+title: "{mscstexta4r} vignette"
+author: "Phil Ferriere"
+date: "May 2016"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{mscstexta4r vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+```{r echo=FALSE}
+# Build with devtools::install(build_vignettes = TRUE)
+library("knitr")
+NOT_CRAN <- identical(tolower(Sys.getenv("NOT_CRAN")), "true")
+knitr::opts_chunk$set(
+  comment = "#>",
+  collapse = TRUE,
+  purl = NOT_CRAN,
+  eval = NOT_CRAN
+)
+```
 
 ## What's the Text Analytics REST API?
 
@@ -54,30 +59,19 @@ correct. A total of 120 languages are supported.
 This API returns a list of strings denoting the key talking points in the input
 text. English, German, Spanish, and Japanese text are supported.
 
-To use the `{mscstexta4r}` R package, you **MUST** have a valid [account](https://www.microsoft.com/cognitive-services/en-us/pricing)
-with Microsoft Cognitive Services. Once you have an account, Microsoft will
-provide you with an [API key](https://en.wikipedia.org/wiki/Application_programming_interface_key).
-This key will be listed under your subscriptions.
-
-After you've configured `{mscstexta4r}` with your API key, you will be able to
-call the Text Analytics REST API from R, up to your maximum number of
-transactions per month and per minute.
-
 ## Package Installation
 
 You can either install the latest **stable** version from CRAN:
 
-
-```r
+```{r eval=FALSE}
 if ("mscstexta4r" %in% installed.packages()[,"Package"] == FALSE) {
   install.packages("mscstexta4r")
 }
 ```
 
-Or, you can install the **development** version
+Or, you can install the **development** version:
 
-
-```r
+```{r eval=FALSE}
 if ("mscstexta4r" %in% installed.packages()[,"Package"] == FALSE) {
   if ("devtools" %in% installed.packages()[,"Package"] == FALSE) {
     install.packages("devtools")
@@ -86,7 +80,7 @@ if ("mscstexta4r" %in% installed.packages()[,"Package"] == FALSE) {
 }
 ```
 
-## Package Loading and Configuration
+## Package Loading and Configuration:
 
 After loading `{mscstexta4r}` with `library()`, you **must** call `textaInit()`
 before you can call any of the core `{mscstexta4r}` functions.
@@ -115,7 +109,7 @@ configuration from two Sys env variables instead:
 
 `MSCS_TEXTANALYTICS_URL` - the URL for the Text Analytics REST API.
 
-`MSCS_TEXTANALYTICS_KEY` - your personal Text Analytics REST API key.
+`MSCS_TEXTANALYTICS_KEY` -  your personal Text Analytics REST API key.
 
 `textaInit()` needs to be called *only once*, after package load.
 
@@ -132,10 +126,10 @@ API you can query to check if you're about to exceed your quota for instance.
 The only way you'll know for sure is by **looking at the error code** returned
 after an API call has failed.
 
-To help with error handling, we recommend the systematic use of `tryCatch()`
-when calling `{mscstexta4r}` core functions. Its mechanism may appear a bit
-daunting at first, but it is well [documented](http://www.inside-r.org/r-doc/base/signalCondition).
-We've also included many examples, as you'll see below.
+Therefore, you must write your R code with failure in mind. Our preferred way is
+to use `tryCatch()`. Its mechanism may appear a bit daunting at first, but it
+is well [documented](http://www.inside-r.org/r-doc/base/signalCondition). We've
+also included many examples, as you'll see below.
 
 ## Synchronous vs Asynchronous Execution
 
@@ -170,15 +164,14 @@ operating in sleep mode, you *WILL NOT* be able to use the console before the
 function completes. If you need to operate the console while topic detection is
 being performed by the Microsoft Cognitive services servers, you should call
 `textaDetectTopics()` in asynchronous mode and then call
-`textaDetectTopicsStatus()` yourself repeatedly afterwards, until results are
+`textaDetectTopicsStatus()` yourself repeteadly afterwards, until results are
 available.
 
 ## Package Configuration with Error Handling
 
 Here's some sample code that illustrates how to use `tryCatch()`:
 
-
-```r
+```{r}
 library('mscstexta4r')
 tryCatch({
 
@@ -194,8 +187,7 @@ tryCatch({
 If `{mscstexta4r}` cannot locate `.mscskeys.json` nor any of the configuration
 environment variables, the code above will generate the following output:
 
-
-```r
+```{r eval=FALSE}
 [1] "mscstexta4r: could not load config info from Sys env nor from file"
 ```
 
@@ -208,8 +200,7 @@ functions.
 
 The core API calls exposed by `{mscstexta4r}` are the following:
 
-
-```r
+```{r eval = FALSE}
 # Perform sentiment analysis
 textaSentiment(
   documents,                  # Input sentences or documents
@@ -218,8 +209,7 @@ textaSentiment(
 )
 ```
 
-
-```r
+```{r eval = FALSE}
 # Detect top topics in group of documents
 textaDetectTopics(
   documents,                  # At least 100 documents
@@ -233,8 +223,7 @@ textaDetectTopics(
 )
 ```
 
-
-```r
+```{r eval = FALSE}
 # Detect languages used in documents
 textaDetectLanguages(
   documents,                      # Input sentences or documents
@@ -242,8 +231,7 @@ textaDetectLanguages(
 )
 ```
 
-
-```r
+```{r eval = FALSE}
   # Get key talking points in documents
 textaKeyPhrases(
   documents,                  # Input sentences or documents
@@ -271,8 +259,7 @@ refer to the [original documentation](https://www.microsoft.com/cognitive-servic
 
 ### Sentiment Analysis
 
-
-```r
+```{r}
 docsText <- c(
   "Loved the food, service and atmosphere! We'll definitely be back.",
   "Very good food, reasonable prices, excellent service.",
@@ -302,49 +289,13 @@ tryCatch({
   geterrmessage()
 
 })
-#> texta [https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment]
-#> 
-#> --------------------------------------
-#>              text               score 
-#> ------------------------------ -------
-#>  Loved the food, service and   0.9847 
-#>  atmosphere! We'll definitely         
-#>            be back.                   
-#> 
-#>   Very good food, reasonable   0.9831 
-#>   prices, excellent service.          
-#> 
-#>   It was a great restaurant.   0.9306 
-#> 
-#>   If steak is what you want,   0.8014 
-#>       this is the place.              
-#> 
-#>  The atmosphere is pretty bad  0.4998 
-#>  but the food is quite good.          
-#> 
-#> The food is quite good but the  0.475 
-#>   atmosphere is pretty bad.           
-#> 
-#>   The food wasn't very good.   0.1877 
-#> 
-#> I'm not sure I would come back 0.2857 
-#>      to this restaurant.              
-#> 
-#>  While the food was good the   0.08727
-#> service was a disappointment.         
-#> 
-#>  I was very disappointed with  0.01877
-#>    both the service and my            
-#>            entree.                    
-#> --------------------------------------
 ```
 
 ### Topic Detection (synchronous mode)
 
-
-```r
+```{r}
 # Load yelpChReviews100 text reviews
-load("./tests/testthat/data/yelpChineseRestaurantReviews100.rda")
+load("../tests/testthat/data/yelpChineseRestaurantReviews100.rda")
 
 tryCatch({
 
@@ -366,63 +317,13 @@ tryCatch({
   geterrmessage()
 
 })
-#> textatopics [https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/topics?]
-#> status: Succeeded
-#> operationId: f0943909cb3949bc855b3315d467a4d0
-#> operationType: topics
-#> topics (first 20):
-#> 
-#> -------------------
-#>  keyPhrase   score 
-#> ----------- -------
-#>    soup       19   
-#> 
-#>    beef       10   
-#> 
-#>    curry       8   
-#> 
-#>     egg        7   
-#> 
-#>   flavor       7   
-#> 
-#>    pork        7   
-#> 
-#>    China       6   
-#> 
-#>    roll        6   
-#> 
-#>   people       5   
-#> 
-#>   review       5   
-#> 
-#>   wontons      5   
-#> 
-#>    sushi       5   
-#> 
-#>  delivery      5   
-#> 
-#>    town        4   
-#> 
-#>   Phoenix      4   
-#> 
-#>    rolls       4   
-#> 
-#>   couple       4   
-#> 
-#>   tables       4   
-#> 
-#>   Buffet       4   
-#> 
-#>    yelp        3   
-#> -------------------
 ```
 
 ### Topic Detection (asynchronous mode)
 
-
-```r
+```{r}
 # Load yelpChReviews100 text reviews
-load("./tests/testthat/data/yelpChineseRestaurantReviews100.rda")
+load("../tests/testthat/data/yelpChineseRestaurantReviews100.rda")
 
 tryCatch({
 
@@ -458,61 +359,11 @@ tryCatch({
   geterrmessage()
 
 })
-#> textatopics [https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/topics?]
-#> status: Succeeded
-#> operationId: e6964857fa2147849b6cbb24584de225
-#> operationType: topics
-#> topics (first 20):
-#> 
-#> -------------------
-#>  keyPhrase   score 
-#> ----------- -------
-#>    soup       19   
-#> 
-#>    beef       10   
-#> 
-#>    curry       8   
-#> 
-#>     egg        7   
-#> 
-#>   flavor       7   
-#> 
-#>    pork        7   
-#> 
-#>    China       6   
-#> 
-#>    roll        6   
-#> 
-#>   people       5   
-#> 
-#>   review       5   
-#> 
-#>   wontons      5   
-#> 
-#>    sushi       5   
-#> 
-#>  delivery      5   
-#> 
-#>    town        4   
-#> 
-#>   Phoenix      4   
-#> 
-#>    rolls       4   
-#> 
-#>   couple       4   
-#> 
-#>   tables       4   
-#> 
-#>   Buffet       4   
-#> 
-#>    yelp        3   
-#> -------------------
 ```
 
 ### Language Detection
 
-
-```r
+```{r}
 docsText = c(
   "The Louvre or the Louvre Museum is the world's largest museum.",
   "Le musée du Louvre est un musée d'art et d'antiquités situé au centre de Paris.",
@@ -535,35 +386,11 @@ tryCatch({
   geterrmessage()
 
 })
-#> texta [https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages?numberOfLanguagesToDetect=1]
-#> 
-#> -----------------------------------------------------------
-#>             text               name    iso6391Name   score 
-#> ----------------------------- ------- ------------- -------
-#>   The Louvre or the Louvre    English      en          1   
-#> Museum is the world's largest                              
-#>            museum.                                         
-#> 
-#>   Le musée du Louvre est un   French       fr          1   
-#>  musée d'art et d'antiquités                               
-#>   situé au centre de Paris.                                
-#> 
-#>   El Museo del Louvre es el   Spanish      es          1   
-#>  museo nacional de Francia.                                
-#> 
-#> Il Museo del Louvre a Parigi, Italian      it          1   
-#>   in Francia, è uno dei più                                
-#>   celebri musei del mondo.                                 
-#> 
-#> Der Louvre ist ein Museum in  German       de          1   
-#>            Paris.                                          
-#> -----------------------------------------------------------
 ```
 
 ### Key Talking Points Extraction
 
-
-```r
+```{r}
 docsText <- c(
   "Loved the food, service and atmosphere! We'll definitely be back.",
   "Very good food, reasonable prices, excellent service.",
@@ -593,68 +420,15 @@ tryCatch({
   geterrmessage()
 
 })
-#> texta [https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases]
-#> 
-#> -----------------------------------------------------------
-#>              text                       keyPhrases         
-#> ------------------------------ ----------------------------
-#>  Loved the food, service and    atmosphere, food, service  
-#>  atmosphere! We'll definitely                              
-#>            be back.                                        
-#> 
-#>   Very good food, reasonable   reasonable prices, good food
-#>   prices, excellent service.                               
-#> 
-#>   It was a great restaurant.         great restaurant      
-#> 
-#>   If steak is what you want,           steak, place        
-#>       this is the place.                                   
-#> 
-#>  The atmosphere is pretty bad        atmosphere, food      
-#>  but the food is quite good.                               
-#> 
-#> The food is quite good but the       food, atmosphere      
-#>   atmosphere is pretty bad.                                
-#> 
-#> I'm not sure I would come back          restaurant         
-#>      to this restaurant.                                   
-#> 
-#>   The food wasn't very good.               food            
-#> 
-#>  While the food was good the          service, food        
-#> service was a disappointment.                              
-#> 
-#>  I was very disappointed with        service, entree       
-#>    both the service and my                                 
-#>            entree.                                         
-#> -----------------------------------------------------------
 ```
+
+## Demo Application
+
+A test/demo Shiny web application is available [here](https://github.com/philferriere/mscsshiny)
 
 ## Credits
 
 All Microsoft Cognitive Services components are Copyright © Microsoft.
 
-For great introductions to the underlying REST API, please refer to [this](https://azure.microsoft.com/en-us/documentation/articles/cognitive-services-text-analytics-quick-start/)
-and [that](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/) link.
-
-## Meta
-
-This package is certainly functional. It's also the first time it is available
-on CRAN. Therefore, if you observe unexpected behaviors (a.k.a. bugs), please be
-kind enough to submit a bug report on GitHub (not via email) with a minimal
-reproducible example [here](https://github.com/philferriere/mscstexta4r/issues).
-
-License: MIT + [file](./LICENSE)
-
-To retrieve `{mscstexta4r}` citation information, run `citation(package = 'mscstexta4r')`
-
-This project is released with a [Contributor Code of Conduct](./CONDUCT.md). By
- participating in this project, you agree to abide by its terms.
-
-## About the Author
-
-For more info about the author of this R package, please visit:
-
-[![https://www.linkedin.com/in/philferriere](https://dl.dropboxusercontent.com/u/5888080/LinkedInDevLead.png)](https://www.linkedin.com/in/philferriere)
-
-
+For great introductions to the underlying REST API, please refer to this [article](https://azure.microsoft.com/en-us/documentation/articles/cognitive-services-text-analytics-quick-start/)
+and this [blog post](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/).

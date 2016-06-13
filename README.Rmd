@@ -1,7 +1,23 @@
-# {mscstexta4r}
-Phil Ferriere  
-June 2016  
-
+---
+title: "{mscstexta4r}"
+subtitle: "R Client for the Microsoft Cognitive Services Text Analytics REST API"
+author: "Phil Ferriere"
+date: "June 2016"
+geometry: margin=0cm
+output:
+  html_document:
+    self_contained: true
+    highlight: tango
+    keep_md: yes
+    theme: cerulean
+    toc: yes
+    toc_depth: 4
+    toc_float: yes
+---
+```{r echo=FALSE}
+library("knitr")
+knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
+```
 [![Build Status](https://api.travis-ci.org/philferriere/mscstexta4r.png)](https://travis-ci.org/philferriere/mscstexta4r)
 [![codecov.io](https://codecov.io/github/philferriere/mscstexta4r/coverage.svg?branch=master)](https://codecov.io/github/philferriere/mscstexta4r?branch=master)
 [![CRAN Version](http://www.r-pkg.org/badges/version/mscstexta4r)](https://cran.r-project.org/package=mscstexta4r)
@@ -67,8 +83,7 @@ transactions per month and per minute.
 
 You can either install the latest **stable** version from CRAN:
 
-
-```r
+```{r eval=FALSE}
 if ("mscstexta4r" %in% installed.packages()[,"Package"] == FALSE) {
   install.packages("mscstexta4r")
 }
@@ -76,8 +91,7 @@ if ("mscstexta4r" %in% installed.packages()[,"Package"] == FALSE) {
 
 Or, you can install the **development** version
 
-
-```r
+```{r eval=FALSE}
 if ("mscstexta4r" %in% installed.packages()[,"Package"] == FALSE) {
   if ("devtools" %in% installed.packages()[,"Package"] == FALSE) {
     install.packages("devtools")
@@ -177,8 +191,7 @@ available.
 
 Here's some sample code that illustrates how to use `tryCatch()`:
 
-
-```r
+```{r}
 library('mscstexta4r')
 tryCatch({
 
@@ -194,8 +207,7 @@ tryCatch({
 If `{mscstexta4r}` cannot locate `.mscskeys.json` nor any of the configuration
 environment variables, the code above will generate the following output:
 
-
-```r
+```{r eval=FALSE}
 [1] "mscstexta4r: could not load config info from Sys env nor from file"
 ```
 
@@ -208,8 +220,7 @@ functions.
 
 The core API calls exposed by `{mscstexta4r}` are the following:
 
-
-```r
+```{r eval = FALSE}
 # Perform sentiment analysis
 textaSentiment(
   documents,                  # Input sentences or documents
@@ -218,8 +229,7 @@ textaSentiment(
 )
 ```
 
-
-```r
+```{r eval = FALSE}
 # Detect top topics in group of documents
 textaDetectTopics(
   documents,                  # At least 100 documents
@@ -233,8 +243,7 @@ textaDetectTopics(
 )
 ```
 
-
-```r
+```{r eval = FALSE}
 # Detect languages used in documents
 textaDetectLanguages(
   documents,                      # Input sentences or documents
@@ -242,8 +251,7 @@ textaDetectLanguages(
 )
 ```
 
-
-```r
+```{r eval = FALSE}
   # Get key talking points in documents
 textaKeyPhrases(
   documents,                  # Input sentences or documents
@@ -271,8 +279,7 @@ refer to the [original documentation](https://www.microsoft.com/cognitive-servic
 
 ### Sentiment Analysis
 
-
-```r
+```{r}
 docsText <- c(
   "Loved the food, service and atmosphere! We'll definitely be back.",
   "Very good food, reasonable prices, excellent service.",
@@ -302,47 +309,11 @@ tryCatch({
   geterrmessage()
 
 })
-#> texta [https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment]
-#> 
-#> --------------------------------------
-#>              text               score 
-#> ------------------------------ -------
-#>  Loved the food, service and   0.9847 
-#>  atmosphere! We'll definitely         
-#>            be back.                   
-#> 
-#>   Very good food, reasonable   0.9831 
-#>   prices, excellent service.          
-#> 
-#>   It was a great restaurant.   0.9306 
-#> 
-#>   If steak is what you want,   0.8014 
-#>       this is the place.              
-#> 
-#>  The atmosphere is pretty bad  0.4998 
-#>  but the food is quite good.          
-#> 
-#> The food is quite good but the  0.475 
-#>   atmosphere is pretty bad.           
-#> 
-#>   The food wasn't very good.   0.1877 
-#> 
-#> I'm not sure I would come back 0.2857 
-#>      to this restaurant.              
-#> 
-#>  While the food was good the   0.08727
-#> service was a disappointment.         
-#> 
-#>  I was very disappointed with  0.01877
-#>    both the service and my            
-#>            entree.                    
-#> --------------------------------------
 ```
 
 ### Topic Detection (synchronous mode)
 
-
-```r
+```{r}
 # Load yelpChReviews100 text reviews
 load("./tests/testthat/data/yelpChineseRestaurantReviews100.rda")
 
@@ -366,61 +337,11 @@ tryCatch({
   geterrmessage()
 
 })
-#> textatopics [https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/topics?]
-#> status: Succeeded
-#> operationId: f0943909cb3949bc855b3315d467a4d0
-#> operationType: topics
-#> topics (first 20):
-#> 
-#> -------------------
-#>  keyPhrase   score 
-#> ----------- -------
-#>    soup       19   
-#> 
-#>    beef       10   
-#> 
-#>    curry       8   
-#> 
-#>     egg        7   
-#> 
-#>   flavor       7   
-#> 
-#>    pork        7   
-#> 
-#>    China       6   
-#> 
-#>    roll        6   
-#> 
-#>   people       5   
-#> 
-#>   review       5   
-#> 
-#>   wontons      5   
-#> 
-#>    sushi       5   
-#> 
-#>  delivery      5   
-#> 
-#>    town        4   
-#> 
-#>   Phoenix      4   
-#> 
-#>    rolls       4   
-#> 
-#>   couple       4   
-#> 
-#>   tables       4   
-#> 
-#>   Buffet       4   
-#> 
-#>    yelp        3   
-#> -------------------
 ```
 
 ### Topic Detection (asynchronous mode)
 
-
-```r
+```{r}
 # Load yelpChReviews100 text reviews
 load("./tests/testthat/data/yelpChineseRestaurantReviews100.rda")
 
@@ -458,61 +379,11 @@ tryCatch({
   geterrmessage()
 
 })
-#> textatopics [https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/topics?]
-#> status: Succeeded
-#> operationId: e6964857fa2147849b6cbb24584de225
-#> operationType: topics
-#> topics (first 20):
-#> 
-#> -------------------
-#>  keyPhrase   score 
-#> ----------- -------
-#>    soup       19   
-#> 
-#>    beef       10   
-#> 
-#>    curry       8   
-#> 
-#>     egg        7   
-#> 
-#>   flavor       7   
-#> 
-#>    pork        7   
-#> 
-#>    China       6   
-#> 
-#>    roll        6   
-#> 
-#>   people       5   
-#> 
-#>   review       5   
-#> 
-#>   wontons      5   
-#> 
-#>    sushi       5   
-#> 
-#>  delivery      5   
-#> 
-#>    town        4   
-#> 
-#>   Phoenix      4   
-#> 
-#>    rolls       4   
-#> 
-#>   couple       4   
-#> 
-#>   tables       4   
-#> 
-#>   Buffet       4   
-#> 
-#>    yelp        3   
-#> -------------------
 ```
 
 ### Language Detection
 
-
-```r
+```{r}
 docsText = c(
   "The Louvre or the Louvre Museum is the world's largest museum.",
   "Le musée du Louvre est un musée d'art et d'antiquités situé au centre de Paris.",
@@ -535,35 +406,11 @@ tryCatch({
   geterrmessage()
 
 })
-#> texta [https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages?numberOfLanguagesToDetect=1]
-#> 
-#> -----------------------------------------------------------
-#>             text               name    iso6391Name   score 
-#> ----------------------------- ------- ------------- -------
-#>   The Louvre or the Louvre    English      en          1   
-#> Museum is the world's largest                              
-#>            museum.                                         
-#> 
-#>   Le musée du Louvre est un   French       fr          1   
-#>  musée d'art et d'antiquités                               
-#>   situé au centre de Paris.                                
-#> 
-#>   El Museo del Louvre es el   Spanish      es          1   
-#>  museo nacional de Francia.                                
-#> 
-#> Il Museo del Louvre a Parigi, Italian      it          1   
-#>   in Francia, è uno dei più                                
-#>   celebri musei del mondo.                                 
-#> 
-#> Der Louvre ist ein Museum in  German       de          1   
-#>            Paris.                                          
-#> -----------------------------------------------------------
 ```
 
 ### Key Talking Points Extraction
 
-
-```r
+```{r}
 docsText <- c(
   "Loved the food, service and atmosphere! We'll definitely be back.",
   "Very good food, reasonable prices, excellent service.",
@@ -593,41 +440,6 @@ tryCatch({
   geterrmessage()
 
 })
-#> texta [https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases]
-#> 
-#> -----------------------------------------------------------
-#>              text                       keyPhrases         
-#> ------------------------------ ----------------------------
-#>  Loved the food, service and    atmosphere, food, service  
-#>  atmosphere! We'll definitely                              
-#>            be back.                                        
-#> 
-#>   Very good food, reasonable   reasonable prices, good food
-#>   prices, excellent service.                               
-#> 
-#>   It was a great restaurant.         great restaurant      
-#> 
-#>   If steak is what you want,           steak, place        
-#>       this is the place.                                   
-#> 
-#>  The atmosphere is pretty bad        atmosphere, food      
-#>  but the food is quite good.                               
-#> 
-#> The food is quite good but the       food, atmosphere      
-#>   atmosphere is pretty bad.                                
-#> 
-#> I'm not sure I would come back          restaurant         
-#>      to this restaurant.                                   
-#> 
-#>   The food wasn't very good.               food            
-#> 
-#>  While the food was good the          service, food        
-#> service was a disappointment.                              
-#> 
-#>  I was very disappointed with        service, entree       
-#>    both the service and my                                 
-#>            entree.                                         
-#> -----------------------------------------------------------
 ```
 
 ## Credits

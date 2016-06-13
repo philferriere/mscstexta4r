@@ -1,0 +1,15 @@
+citHeader("To cite {mscstexta4r} in publications use:")
+
+citEntry(
+  entry  = "Manual",
+  title  = "mscstexta4r: R Client for the Microsoft Cognitive Services Text Analytics REST API",
+  author = as.person("Phil Ferriere"),
+  year   = "2016",
+  note   = "R Package",
+  url    = "https://github.com/philferriere/mscstexta4r",
+  textVersion  =
+  paste("Phil Ferriere (2016).",
+        "{mscstexta4r}: R Client for the Microsoft Cognitive Services Text Analytics REST API.",
+        "R Package.",
+        "https://github.com/philferriere/mscstexta4r")
+)

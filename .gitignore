@@ -16,6 +16,8 @@
 
 # RStudio files
 .Rproj.user/
+.Ruserdata
+.DS_Store
 
 # produced vignettes
 vignettes/*.html
@@ -31,3 +33,9 @@ vignettes/*.pdf
 # Temporary files created by R markdown
 *.utf8.md
 *.knit.md
+.Rproj.user
+
+# Ignore backup code files
+bak/
+.bak
+

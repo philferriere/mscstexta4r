@@ -1,0 +1,8 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^CONDUCT\.md$
+^\.travis\.yml$
+^cran-comments\.md$
+^README\.Rmd$
+^README\.html$
+^\.bogusmscskeys\.json$
