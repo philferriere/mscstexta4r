@@ -171,7 +171,7 @@ available.
 
 Here's some sample code that illustrates how to use `tryCatch()`:
 
-```{r}
+```{r eval = FALSE}
 library('mscstexta4r')
 tryCatch({
 
@@ -259,7 +259,7 @@ refer to the [original documentation](https://www.microsoft.com/cognitive-servic
 
 ### Sentiment Analysis
 
-```{r}
+```{r eval = FALSE}
 docsText <- c(
   "Loved the food, service and atmosphere! We'll definitely be back.",
   "Very good food, reasonable prices, excellent service.",
@@ -293,7 +293,7 @@ tryCatch({
 
 ### Topic Detection (synchronous mode)
 
-```{r}
+```{r eval = FALSE}
 # Load yelpChReviews100 text reviews
 load("../tests/testthat/data/yelpChineseRestaurantReviews100.rda")
 
@@ -321,7 +321,7 @@ tryCatch({
 
 ### Topic Detection (asynchronous mode)
 
-```{r}
+```{r eval = FALSE}
 # Load yelpChReviews100 text reviews
 load("../tests/testthat/data/yelpChineseRestaurantReviews100.rda")
 
@@ -364,7 +364,7 @@ tryCatch({
 
 ### Language Detection
 
-```{r}
+```{r eval = FALSE}
 docsText = c(
   "The Louvre or the Louvre Museum is the world's largest museum.",
   "Le musée du Louvre est un musée d'art et d'antiquités situé au centre de Paris.",
@@ -391,7 +391,7 @@ tryCatch({
 
 ### Key Talking Points Extraction
 
-```{r}
+```{r eval = FALSE}
 docsText <- c(
   "Loved the food, service and atmosphere! We'll definitely be back.",
   "Very good food, reasonable prices, excellent service.",

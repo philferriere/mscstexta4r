@@ -2,6 +2,7 @@
 Phil Ferriere  
 June 2016  
 
+
 [Microsoft Cognitive Services](https://www.microsoft.com/cognitive-services/en-us/documentation)
 -- formerly known as Project Oxford -- are a set of APIs, SDKs and services
 that developers can use to add [AI](https://en.wikipedia.org/wiki/Artificial_intelligence)
@@ -364,7 +365,7 @@ tryCatch({
 })
 #> textatopics [https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/topics?]
 #> status: Succeeded
-#> operationId: f0943909cb3949bc855b3315d467a4d0
+#> operationId: 64bb5188028b43f2800019a6827ba6a5
 #> operationType: topics
 #> topics (first 20):
 #> 
@@ -456,7 +457,7 @@ tryCatch({
 })
 #> textatopics [https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/topics?]
 #> status: Succeeded
-#> operationId: e6964857fa2147849b6cbb24584de225
+#> operationId: 8c0b2a6a23a24786bbd7fdd8d5c8bc29
 #> operationType: topics
 #> topics (first 20):
 #> 

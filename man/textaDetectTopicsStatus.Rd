@@ -5,11 +5,13 @@
 \title{Retrieves the status of an topic detection operation submitted for
 processing.}
 \usage{
-textaDetectTopicsStatus(operation)
+textaDetectTopicsStatus(operation, verbose = FALSE)
 }
 \arguments{
 \item{operation}{(textatopics) textatopics S3 object returned by the original
 call to \code{\link{textaDetectTopics}}.}
+
+\item{verbose}{(logical) If set to TRUE, print poll status to stdout.}
 }
 \value{
 An S3 object of the class \code{\link{textatopics}} with the results
@@ -42,7 +44,7 @@ for details.
      topicsToExclude = NULL,     # Topics to exclude (optional)
      minDocumentsPerWord = NULL, # Threshold to exclude rare topics (optional)
      maxDocumentsPerWord = NULL, # Threshold to exclude ubiquitous topics (optional)
-     resultsPollInterval = 0L    # Poll interval (in s, default: 20s, use 0L for async)
+     resultsPollInterval = 0L    # Poll interval (in s, default: 30s, use 0L for async)
    )
 
    # Poll the servers until the work completes or until we time out
