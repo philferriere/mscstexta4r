@@ -10,7 +10,7 @@ sudo: false
 cache: packages
 env:
   global:
-  - NOT_CRAN="true"
+  - NOT_CRAN="false"
 r_github_packages:
   - jimhester/covr
 after_success:
