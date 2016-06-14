@@ -2,10 +2,6 @@
 Phil Ferriere  
 June 2016  
 
-[![Build Status](https://api.travis-ci.org/philferriere/mscstexta4r.png)](https://travis-ci.org/philferriere/mscstexta4r)
-[![codecov.io](https://codecov.io/github/philferriere/mscstexta4r/coverage.svg?branch=master)](https://codecov.io/github/philferriere/mscstexta4r?branch=master)
-[![CRAN Version](http://www.r-pkg.org/badges/version/mscstexta4r)](https://cran.r-project.org/package=mscstexta4r)
-
 [Microsoft Cognitive Services](https://www.microsoft.com/cognitive-services/en-us/documentation)
 -- formerly known as Project Oxford -- are a set of APIs, SDKs and services
 that developers can use to add [AI](https://en.wikipedia.org/wiki/Artificial_intelligence)
