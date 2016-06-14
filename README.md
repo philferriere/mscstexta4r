@@ -2,6 +2,8 @@
 Phil Ferriere  
 June 2016  
 
+[![Build Status](https://api.travis-ci.org/philferriere/mscstexta4r.png)](https://travis-ci.org/philferriere/mscstexta4r)
+[![codecov.io](https://codecov.io/github/philferriere/mscstexta4r/coverage.svg?branch=master)](https://codecov.io/github/philferriere/mscstexta4r?branch=master)
 
 [Microsoft Cognitive Services](https://www.microsoft.com/cognitive-services/en-us/documentation)
 -- formerly known as Project Oxford -- are a set of APIs, SDKs and services
@@ -365,7 +367,7 @@ tryCatch({
 })
 #> textatopics [https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/topics?]
 #> status: Succeeded
-#> operationId: 64bb5188028b43f2800019a6827ba6a5
+#> operationId: add4d82003c84da897975f24f19a2698
 #> operationType: topics
 #> topics (first 20):
 #> 
@@ -457,7 +459,7 @@ tryCatch({
 })
 #> textatopics [https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/topics?]
 #> status: Succeeded
-#> operationId: 8c0b2a6a23a24786bbd7fdd8d5c8bc29
+#> operationId: b1c3a97a48bc43898d417c6d57ec8706
 #> operationType: topics
 #> topics (first 20):
 #> 
