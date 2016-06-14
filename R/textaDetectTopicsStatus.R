@@ -18,6 +18,8 @@
 #' @param operation (textatopics) textatopics S3 object returned by the original
 #' call to \code{\link{textaDetectTopics}}.
 #'
+#' @param verbose (logical) If set to TRUE, print poll status to stdout.
+#'
 #' @return An S3 object of the class \code{\link{textatopics}} with the results
 #' of the topic detection operation. See \code{\link{textatopics}} for details.
 #'
@@ -37,7 +39,7 @@
 #'      topicsToExclude = NULL,     # Topics to exclude (optional)
 #'      minDocumentsPerWord = NULL, # Threshold to exclude rare topics (optional)
 #'      maxDocumentsPerWord = NULL, # Threshold to exclude ubiquitous topics (optional)
-#'      resultsPollInterval = 0L    # Poll interval (in s, default: 20s, use 0L for async)
+#'      resultsPollInterval = 0L    # Poll interval (in s, default: 30s, use 0L for async)
 #'    )
 #'
 #'    # Poll the servers until the work completes or until we time out
@@ -116,11 +118,13 @@
 #' }
 
 textaDetectTopicsStatus <- function(
-  operation  # An S3 object of class "textatopics"
+  operation,       # An S3 object of class "textatopics"
+  verbose = FALSE  # If set to TRUE, print poll status to stdout
 ) {
 
-  # Validate input param
+  # Validate input params
   stopifnot(is.textatopics(operation))
+  stopifnot(is.logical(verbose))
 
   # Call the MSCS Text Analytics REST API
   res <- textaHttr(
@@ -145,6 +149,9 @@ textaDetectTopicsStatus <- function(
         }
       }
     }
+  }
+  if (verbose == TRUE) {
+    cat(sprintf("[operationId: %s, status: %s]\n", operation$operationId, status))
   }
 
   # Return results as S3 object of class "textatopics"

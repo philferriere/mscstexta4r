@@ -13,9 +13,9 @@ test_that("textaDetectTopics returns expected result structure", {
     topicsToExclude = NULL,       # Topics to exclude (optional)
     minDocumentsPerWord = NULL,   # Threshold to exclude rare topics (optional)
     maxDocumentsPerWord = NULL,   # Threshold to exclude ubiquitous topics (optional)
-    resultsPollInterval = 30L,    # Poll interval (in s, default: 30s, use 0L for async)
+    resultsPollInterval = 60L,    # Poll interval (in s, default: 30s, use 0L for async)
     resultsTimeout = 1200L,       # Give up timeout (in s, default: 1200s = 20mn)
-    verbose = FALSE               # If set to TRUE, print every poll status to stdout
+    verbose = TRUE                # If set to TRUE, print every poll status to stdout
   )
 
   # Expected results
@@ -82,9 +82,9 @@ test_that("textaDetectTopics topic control works correctly", {
     topicsToExclude = topicsToExclude,       # Topics to exclude (optional)
     minDocumentsPerWord = minDocumentsPerWord,   # Threshold to exclude rare topics (optional)
     maxDocumentsPerWord = maxDocumentsPerWord,   # Threshold to exclude ubiquitous topics (optional)
-    resultsPollInterval = 20L,    # Poll interval (in s, default: 20s, use 0L for async)
+    resultsPollInterval = 60L,    # Poll interval (in s, default: 30s, use 0L for async)
     resultsTimeout = 600L,        # Give up timeout (in s, default: 600s = 10mn)
-    verbose = FALSE                # If set to TRUE, print every poll status to stdout
+    verbose = TRUE                # If set to TRUE, print every poll status to stdout
   )
 
   expect_that(res, is_a("textatopics"))
@@ -141,9 +141,9 @@ shortStopWordList = c(
     topicsToExclude = NULL,       # Topics to exclude (optional)
     minDocumentsPerWord = NULL,   # Threshold to exclude rare topics (optional)
     maxDocumentsPerWord = NULL,   # Threshold to exclude ubiquitous topics (optional)
-    resultsPollInterval = 30L,    # Poll interval (in s, default: 20s, use 0L for async)
+    resultsPollInterval = 60L,    # Poll interval (in s, default: 30s, use 0L for async)
     resultsTimeout = 1200L,       # Give up timeout (in s, default: 600s = 10mn)
-    verbose = FALSE               # If set to TRUE, print every poll status to stdout
+    verbose = TRUE                # If set to TRUE, print every poll status to stdout
   )
 
   expect_that(res, is_a("textatopics"))

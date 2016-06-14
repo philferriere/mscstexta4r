@@ -261,10 +261,7 @@ textaDetectTopics <- function(
       startTime <- Sys.time()
 
       # Poll for results
-      results <- textaDetectTopicsStatus(operation)
-      if (verbose == TRUE) {
-        cat(sprintf("[operationId: %s, status: %s]\n", operationId, results$status))
-      }
+      results <- textaDetectTopicsStatus(operation, verbose)
       if (results$status != "NotStarted" && results$status != "Running")
         break;
     }
@@ -275,10 +272,7 @@ textaDetectTopics <- function(
 
   } else {
     # Poll just once and return
-    results <- textaDetectTopicsStatus(operation)
-    if (verbose == TRUE) {
-      cat(sprintf("[operationId: %s, status: %s]\n", operationId, results$status))
-    }
+    results <- textaDetectTopicsStatus(operation, verbose)
   }
 
   results
