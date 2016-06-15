@@ -24,8 +24,8 @@ knitr::opts_chunk$set(
 
 Per Microsoft's website, the [Text Analytics REST API](https://www.microsoft.com/cognitive-services/en-us/text-analytics/documentation)
 is a suite of text analytics web services built with Azure Machine Learning that
-can be used to analyze unstructured text. The API supports four text analysis
-operations:
+can be used to analyze unstructured text. The API supports the following text
+analysis operations:
 
 * Sentiment analysis - Is a sentence or document generally positive or negative?
 * Topic detection - What's being discussed across a list of documents/reviews/articles?
@@ -161,7 +161,9 @@ activating itself periodically and then going back to sleep, until the results
 have become available. In sleep mode, even though it appears "stuck",
 `textaDetectTopics()` doesn't use any CPU resources. While the function is
 operating in sleep mode, you *WILL NOT* be able to use the console before the
-function completes. If you need to operate the console while topic detection is
+function completes.
+
+If you need to operate the console while topic detection is
 being performed by the Microsoft Cognitive services servers, you should call
 `textaDetectTopics()` in asynchronous mode and then call
 `textaDetectTopicsStatus()` yourself repeatedly afterwards, until results are
@@ -259,7 +261,7 @@ refer to the [original documentation](https://www.microsoft.com/cognitive-servic
 
 ### Sentiment Analysis
 
-```{r eval = FALSE}
+```{r}
 docsText <- c(
   "Loved the food, service and atmosphere! We'll definitely be back.",
   "Very good food, reasonable prices, excellent service.",
@@ -293,7 +295,7 @@ tryCatch({
 
 ### Topic Detection (synchronous mode)
 
-```{r eval = FALSE}
+```{r}
 # Load yelpChReviews100 text reviews
 load("../tests/testthat/data/yelpChineseRestaurantReviews100.rda")
 
@@ -321,7 +323,7 @@ tryCatch({
 
 ### Topic Detection (asynchronous mode)
 
-```{r eval = FALSE}
+```{r}
 # Load yelpChReviews100 text reviews
 load("../tests/testthat/data/yelpChineseRestaurantReviews100.rda")
 
@@ -364,7 +366,7 @@ tryCatch({
 
 ### Language Detection
 
-```{r eval = FALSE}
+```{r}
 docsText = c(
   "The Louvre or the Louvre Museum is the world's largest museum.",
   "Le musée du Louvre est un musée d'art et d'antiquités situé au centre de Paris.",
@@ -391,7 +393,7 @@ tryCatch({
 
 ### Key Talking Points Extraction
 
-```{r eval = FALSE}
+```{r}
 docsText <- c(
   "Loved the food, service and atmosphere! We'll definitely be back.",
   "Very good food, reasonable prices, excellent service.",
@@ -426,6 +428,11 @@ tryCatch({
 ## Demo Application
 
 A test/demo Shiny web application is available [here](https://github.com/philferriere/mscsshiny)
+
+## Related Microsoft Cognitive Services Packages
+
+`{mscsweblm4r}`, a R Client for the Microsoft Cognitive Services **Web Language
+Model** REST API, is also available on [CRAN](https://cran.r-project.org/package=mscsweblm4r)
 
 ## Credits
 

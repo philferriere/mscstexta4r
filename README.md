@@ -4,6 +4,7 @@ June 2016
 
 [![Build Status](https://api.travis-ci.org/philferriere/mscstexta4r.png)](https://travis-ci.org/philferriere/mscstexta4r)
 [![codecov.io](https://codecov.io/github/philferriere/mscstexta4r/coverage.svg?branch=master)](https://codecov.io/github/philferriere/mscstexta4r?branch=master)
+[![CRAN Version](http://www.r-pkg.org/badges/version/mscstexta4r)](https://cran.r-project.org/package=mscstexta4r)
 
 [Microsoft Cognitive Services](https://www.microsoft.com/cognitive-services/en-us/documentation)
 -- formerly known as Project Oxford -- are a set of APIs, SDKs and services
@@ -18,8 +19,8 @@ processing ([NLP](https://en.wikipedia.org/wiki/Natural_language_processing)).
 
 Per Microsoft's website, the [Text Analytics REST API](https://www.microsoft.com/cognitive-services/en-us/text-analytics/documentation)
 is a suite of text analytics web services built with Azure Machine Learning that
-can be used to analyze unstructured text. The API supports four text analysis
-operations:
+can be used to analyze unstructured text. The API supports the following text
+analysis operations:
 
 * Sentiment analysis - Is a sentence or document generally positive or negative?
 * Topic detection - What's being discussed across a list of documents/reviews/articles?
@@ -166,11 +167,12 @@ activating itself periodically and then going back to sleep, until the results
 have become available. In sleep mode, even though it appears "stuck",
 `textaDetectTopics()` doesn't use any CPU resources. While the function is
 operating in sleep mode, you *WILL NOT* be able to use the console before the
-function completes. If you need to operate the console while topic detection is
-being performed by the Microsoft Cognitive services servers, you should call
-`textaDetectTopics()` in asynchronous mode and then call
-`textaDetectTopicsStatus()` yourself repeatedly afterwards, until results are
-available.
+function completes. 
+
+If you need to operate the console while topic detection is being performed by
+the Microsoft Cognitive services servers, you should call `textaDetectTopics()`
+in asynchronous mode and then call `textaDetectTopicsStatus()` yourself
+repeatedly afterwards, until results are available.
 
 ## Package Configuration with Error Handling
 
@@ -367,7 +369,7 @@ tryCatch({
 })
 #> textatopics [https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/topics?]
 #> status: Succeeded
-#> operationId: add4d82003c84da897975f24f19a2698
+#> operationId: 2b094f4e09cb4a5798b1ca00dbd956ff
 #> operationType: topics
 #> topics (first 20):
 #> 
@@ -459,7 +461,7 @@ tryCatch({
 })
 #> textatopics [https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/topics?]
 #> status: Succeeded
-#> operationId: b1c3a97a48bc43898d417c6d57ec8706
+#> operationId: 3d40887718154e9a820b08ae12084663
 #> operationType: topics
 #> topics (first 20):
 #> 
@@ -636,12 +638,14 @@ All Microsoft Cognitive Services components are Copyright © Microsoft.
 For great introductions to the underlying REST API, please refer to [this](https://azure.microsoft.com/en-us/documentation/articles/cognitive-services-text-analytics-quick-start/)
 and [that](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/) link.
 
+## Related Microsoft Cognitive Services Packages
+
+`{mscsweblm4r}`, a R Client for the Microsoft Cognitive Services **Web Language
+Model** REST API, is also available on [CRAN](https://cran.r-project.org/package=mscsweblm4r)
+
 ## Meta
 
-This package is certainly functional. It's also the first time it is available
-on CRAN. Therefore, if you observe unexpected behaviors (a.k.a. bugs), please be
-kind enough to submit a bug report on GitHub (not via email) with a minimal
-reproducible example [here](https://github.com/philferriere/mscstexta4r/issues).
+Please report any issues or bugs [here](https://github.com/philferriere/mscstexta4r/issues).
 
 License: MIT + [file](./LICENSE)
 

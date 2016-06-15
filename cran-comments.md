@@ -15,14 +15,26 @@ R CMD check results
 R CMD check results
 0 errors | 0 warnings | 1 notes
 
-* Possibly mis-spelled words in DESCRIPTION:
-  API (4:14, 10:10, 14:33, 14:53)
-  
-Per [Wikipedia](https://en.wikipedia.org/wiki/Application_programming_interface), we believe this spelling to be correct.
+* checking CRAN incoming feasibility ... NOTE
+Maintainer: 'Phil Ferriere <pferriere@hotmail.com>'
+
+New submission
+
+License components with restrictions and base license permitting such:
+  MIT + file LICENSE
+File 'LICENSE':
+  YEAR: 2016
+  COPYRIGHT HOLDER: Phil Ferriere
+
+Possibly mis-spelled words in DESCRIPTION:
+  API (4:14, 10:10, 13:33, 13:53)
+  Analytics (3:59, 9:65)
+
+* Per [Wikipedia](https://en.wikipedia.org/wiki/Application_programming_interface), we believe this spelling to be correct. Both mis-spelling notes are false positives.
 
 R CMD check tests were run in all test environments listed at the top of this note.
 
-Thank you for your help and patience.
+Thank you for your help.
 
 Regards,
 Phil Ferriere <pferriere@hotmail.com>

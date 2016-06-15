@@ -1,9 +1,9 @@
 
-#' @title Retrieves the status of an topic detection operation submitted for
+#' @title Retrieves the status of a topic detection operation submitted for
 #' processing.
 #'
 #' @description This function retrieves the status of an asynchronous topic
-#' detection operation previously submitted for processing. If the the operation
+#' detection operation previously submitted for processing. If the operation
 #' has reached a 'Succeeded' state, this function will also return the results.
 #'
 #' Internally, this function invokes the Microsoft Cognitive Services Text

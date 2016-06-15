@@ -1,6 +1,10 @@
-mscstexta4r 0.1.0
+mscstexta4r 0.1.1
 ===============
 
-### NEW FEATURES
+### 0.1.1 - FIXES
+
+* Documentation updates.
+
+### 0.1.0 - NEW FEATURES
 
 * Initial release to CRAN.
