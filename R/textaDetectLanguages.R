@@ -108,7 +108,7 @@ textaDetectLanguages <- function(
 
   # Combine documents in df easy to JSON encode in request body
   textaDF <- data.frame(
-    id = stringi::stri_rand_strings(length(documents), 5),
+    id = stringi::stri_rand_strings(length(documents), 8),
     text = documents,
     stringsAsFactors = FALSE
   )
