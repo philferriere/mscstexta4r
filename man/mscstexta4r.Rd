@@ -12,6 +12,56 @@ package, you MUST have a valid account with \url{https://www.microsoft.com/cogni
 Once you have an account, Microsoft will provide you with a (free) API key
 you can use with this package.
 }
+\section{The MSCS Text Analytics REST API}{
+
+
+Microsoft Cognitive Services -- formerly known as Project Oxford -- are a set
+of APIs, SDKs and services that developers can use to add AI features to
+their apps. Those features include emotion and video detection; facial,
+speech and vision recognition; as well as speech and NLP.
+
+The Text Analytics REST API provides tools for NLP and is documented at
+\url{https://www.microsoft.com/cognitive-services/en-us/text-analytics/documentation}.
+This API supports the following operations:
+
+\itemize{
+ \item Sentiment analysis - Is a sentence or document generally positive or negative?
+ \item Topic detection - What's being discussed across a list of documents/reviews/articles?
+ \item Language detection - What language is a document written in?
+ \item Key talking points extraction - What's being discussed in a single document?
+}
+}
+
+\section{\pkg{mscstexta4r} Functions}{
+
+
+The following \pkg{mscstexta4r} core functions are used to wrap the
+MSCS Text Analytics REST API:
+
+\itemize{
+ \item Sentiment analysis - \code{\link{textaSentiment}} function
+ \item Topic detection - \code{\link{textaDetectTopics}} and \code{\link{textaDetectTopicsStatus}} functions
+ \item Language detection - \code{\link{textaDetectLanguages}} function
+ \item Extraction of key talking points - \code{\link{textaKeyPhrases}} function
+}
+
+The \code{\link{textaInit}} configuration function is used to set the REST
+API URL and the private API key. It needs to be called \emph{only once},
+after package load, or the core functions will not work properly.
+}
+
+\section{Prerequisites}{
+
+
+To use the \pkg{mscstexta4r} R package, you \strong{MUST} have a valid
+account with Microsoft Cognitive Services (see \url{https://www.microsoft.com/cognitive-services/en-us/pricing}
+for details). Once you have an account, Microsoft will provide you with an
+API key listed under your subscriptions. After you've configured
+\pkg{mscstexta4r} with your API key (as explained in the next section), you
+will be able to call the Text Analytics REST API from R, up to your
+maximum number of transactions per month and per minute.
+}
+
 \section{Package Loading and Configuration}{
 
 
@@ -47,49 +97,11 @@ pick up its configuration information from two Sys env variables instead:
 \code{MSCS_TEXTANALYTICS_KEY} -  your personal Text Analytics REST API key.
 }
 
-\section{The MSCS Text Analytics REST API}{
-
-
-Microsoft Cognitive Services -- formerly known as Project Oxford -- are a set
-of APIs, SDKs and services that developers can use to add AI features to
-their apps. Those features include emotion and video detection; facial,
-speech and vision recognition; and speech and language understanding.
-
-The Text Analytics REST API provides tools for natural language
-processing and is documented at \url{https://www.microsoft.com/cognitive-services/en-us/text-analytics/documentation}.
-The MSCS Text Analytics REST API supports four text analytics operations:
-
-\itemize{
- \item Sentiment analysis.
- \item Topic detection.
- \item Language detection.
- \item Extraction of key talking points.
-}
-}
-
-\section{\pkg{mscstexta4r} Functions}{
-
-
-The following \pkg{mscstexta4r} core functions are used to wrap the
-MSCS Text Analytics REST API:
-
-\itemize{
- \item Sentiment analysis - \code{\link{textaSentiment}} function
- \item Topic detection - \code{\link{textaDetectTopics}} and \code{\link{textaDetectTopicsStatus}} functions
- \item Language detection - \code{\link{textaDetectLanguages}} function
- \item Extraction of key talking points - \code{\link{textaKeyPhrases}} function
-}
-
-The \code{\link{textaInit}} configuration function is used to set the REST
-API URL and the private API key. It needs to be called \emph{only once},
-after package load, or the core functions will not work properly.
-}
-
 \section{Synchronous vs Asynchronous Execution}{
 
 
-All but \strong{one} core text analytics functions execute exclusively in
-synchronous mode. \code{\link{textaDetectTopics}} is the only function that
+All but \strong{ONE} core text analytics functions execute exclusively in
+synchronous mode: \code{\link{textaDetectTopics}} is the only function that
 can be executed either synchronously or asynchronously. Why? Because topic
 detection is typically a "batch" operation meant to be performed on thousands
 of related documents (product reviews, research articles, etc.).

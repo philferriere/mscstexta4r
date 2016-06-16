@@ -18,7 +18,7 @@ R CMD check results
 * checking CRAN incoming feasibility ... NOTE
 Maintainer: 'Phil Ferriere <pferriere@hotmail.com>'
 
-New submission
+Days since last update: 2
 
 License components with restrictions and base license permitting such:
   MIT + file LICENSE

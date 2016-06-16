@@ -10,8 +10,7 @@ June 2016
 -- formerly known as Project Oxford -- are a set of APIs, SDKs and services
 that developers can use to add [AI](https://en.wikipedia.org/wiki/Artificial_intelligence)
 features to their apps. Those features include emotion and video detection;
-facial, speech and vision recognition; and speech and natural language
-processing ([NLP](https://en.wikipedia.org/wiki/Natural_language_processing)).
+facial, speech and vision recognition; as well as speech and [NLP](https://en.wikipedia.org/wiki/Natural_language_processing).
 
 > Note: A test/demo Shiny web application is available [here](https://github.com/philferriere/mscsshiny).
 
@@ -19,8 +18,8 @@ processing ([NLP](https://en.wikipedia.org/wiki/Natural_language_processing)).
 
 Per Microsoft's website, the [Text Analytics REST API](https://www.microsoft.com/cognitive-services/en-us/text-analytics/documentation)
 is a suite of text analytics web services built with Azure Machine Learning that
-can be used to analyze unstructured text. The API supports the following text
-analysis operations:
+can be used to analyze unstructured text. The API supports the following
+operations:
 
 * Sentiment analysis - Is a sentence or document generally positive or negative?
 * Topic detection - What's being discussed across a list of documents/reviews/articles?
@@ -54,18 +53,17 @@ correct. A total of 120 languages are supported.
 This API returns a list of strings denoting the key talking points in the input
 text. English, German, Spanish, and Japanese text are supported.
 
-To use the `{mscstexta4r}` R package, you **MUST** have a valid [account](https://www.microsoft.com/cognitive-services/en-us/pricing)
-with Microsoft Cognitive Services. Once you have an account, Microsoft will
-provide you with an [API key](https://en.wikipedia.org/wiki/Application_programming_interface_key).
-This key will be listed under your subscriptions.
-
-After you've configured `{mscstexta4r}` with your API key, you will be able to
-call the Text Analytics REST API from R, up to your maximum number of
-transactions per month and per minute.
-
 ## Package Installation
 
-You can either install the latest **stable** version from CRAN:
+To use the `{mscstexta4r}` R package, you **MUST** have a valid [account](https://www.microsoft.com/cognitive-services/en-us/pricing)
+with Microsoft Cognitive Services. Once you have an account, Microsoft will
+provide you with an [API key](https://en.wikipedia.org/wiki/Application_programming_interface_key)
+listed under your subscriptions. After you've configured `{mscstexta4r}` with
+your API key, you will be able to call the Text Analytics REST API from R, up
+to your maximum number of transactions per month and per minute.
+
+You can install the latest **stable** version of `{mscstexta4r}` from CRAN as
+follows:
 
 
 ```r
@@ -74,7 +72,7 @@ if ("mscstexta4r" %in% installed.packages()[,"Package"] == FALSE) {
 }
 ```
 
-Or, you can install the **development** version
+You can also install the **development** version using `{devtools}`:
 
 
 ```r
@@ -369,7 +367,7 @@ tryCatch({
 })
 #> textatopics [https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/topics?]
 #> status: Succeeded
-#> operationId: 2b094f4e09cb4a5798b1ca00dbd956ff
+#> operationId: 547a289d89cc41a79d357da75342c3ba
 #> operationType: topics
 #> topics (first 20):
 #> 
@@ -459,55 +457,7 @@ tryCatch({
   geterrmessage()
 
 })
-#> textatopics [https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/topics?]
-#> status: Succeeded
-#> operationId: 3d40887718154e9a820b08ae12084663
-#> operationType: topics
-#> topics (first 20):
-#> 
-#> -------------------
-#>  keyPhrase   score 
-#> ----------- -------
-#>    soup       19   
-#> 
-#>    beef       10   
-#> 
-#>    curry       8   
-#> 
-#>     egg        7   
-#> 
-#>   flavor       7   
-#> 
-#>    pork        7   
-#> 
-#>    China       6   
-#> 
-#>    roll        6   
-#> 
-#>   people       5   
-#> 
-#>   review       5   
-#> 
-#>   wontons      5   
-#> 
-#>    sushi       5   
-#> 
-#>  delivery      5   
-#> 
-#>    town        4   
-#> 
-#>   Phoenix      4   
-#> 
-#>    rolls       4   
-#> 
-#>   couple       4   
-#> 
-#>   tables       4   
-#> 
-#>   Buffet       4   
-#> 
-#>    yelp        3   
-#> -------------------
+# Same results as in synchronous mode
 ```
 
 ### Language Detection

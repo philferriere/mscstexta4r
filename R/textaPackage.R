@@ -12,12 +12,11 @@
 #' Microsoft Cognitive Services -- formerly known as Project Oxford -- are a set
 #' of APIs, SDKs and services that developers can use to add AI features to
 #' their apps. Those features include emotion and video detection; facial,
-#' speech and vision recognition; and speech and language understanding.
+#' speech and vision recognition; as well as speech and NLP.
 #'
-#' The Text Analytics REST API provides tools for natural language
-#' processing and is documented at \url{https://www.microsoft.com/cognitive-services/en-us/text-analytics/documentation}.
-#
-#' The MSCS Text Analytics REST API supports the following text analytics operations:
+#' The Text Analytics REST API provides tools for NLP and is documented at
+#' \url{https://www.microsoft.com/cognitive-services/en-us/text-analytics/documentation}.
+#' This API supports the following operations:
 #'
 #' \itemize{
 #'  \item Sentiment analysis - Is a sentence or document generally positive or negative?
@@ -41,6 +40,16 @@
 #' The \code{\link{textaInit}} configuration function is used to set the REST
 #' API URL and the private API key. It needs to be called \emph{only once},
 #' after package load, or the core functions will not work properly.
+#'
+#' @section Prerequisites:
+#'
+#' To use the \pkg{mscstexta4r} R package, you \strong{MUST} have a valid
+#' account with Microsoft Cognitive Services (see \url{https://www.microsoft.com/cognitive-services/en-us/pricing}
+#' for details). Once you have an account, Microsoft will provide you with an
+#' API key listed under your subscriptions. After you've configured
+#' \pkg{mscstexta4r} with your API key (as explained in the next section), you
+#' will be able to call the Text Analytics REST API from R, up to your
+#' maximum number of transactions per month and per minute.
 #'
 #' @section Package Loading and Configuration:
 #'
@@ -77,8 +86,8 @@
 #'
 #' @section Synchronous vs Asynchronous Execution:
 #'
-#' All but \strong{one} core text analytics functions execute exclusively in
-#' synchronous mode. \code{\link{textaDetectTopics}} is the only function that
+#' All but \strong{ONE} core text analytics functions execute exclusively in
+#' synchronous mode: \code{\link{textaDetectTopics}} is the only function that
 #' can be executed either synchronously or asynchronously. Why? Because topic
 #' detection is typically a "batch" operation meant to be performed on thousands
 #' of related documents (product reviews, research articles, etc.).

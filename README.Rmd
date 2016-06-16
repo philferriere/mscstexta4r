@@ -26,8 +26,7 @@ knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
 -- formerly known as Project Oxford -- are a set of APIs, SDKs and services
 that developers can use to add [AI](https://en.wikipedia.org/wiki/Artificial_intelligence)
 features to their apps. Those features include emotion and video detection;
-facial, speech and vision recognition; and speech and natural language
-processing ([NLP](https://en.wikipedia.org/wiki/Natural_language_processing)).
+facial, speech and vision recognition; as well as speech and [NLP](https://en.wikipedia.org/wiki/Natural_language_processing).
 
 > Note: A test/demo Shiny web application is available [here](https://github.com/philferriere/mscsshiny).
 
@@ -35,8 +34,8 @@ processing ([NLP](https://en.wikipedia.org/wiki/Natural_language_processing)).
 
 Per Microsoft's website, the [Text Analytics REST API](https://www.microsoft.com/cognitive-services/en-us/text-analytics/documentation)
 is a suite of text analytics web services built with Azure Machine Learning that
-can be used to analyze unstructured text. The API supports the following text
-analysis operations:
+can be used to analyze unstructured text. The API supports the following
+operations:
 
 * Sentiment analysis - Is a sentence or document generally positive or negative?
 * Topic detection - What's being discussed across a list of documents/reviews/articles?
@@ -70,18 +69,17 @@ correct. A total of 120 languages are supported.
 This API returns a list of strings denoting the key talking points in the input
 text. English, German, Spanish, and Japanese text are supported.
 
-To use the `{mscstexta4r}` R package, you **MUST** have a valid [account](https://www.microsoft.com/cognitive-services/en-us/pricing)
-with Microsoft Cognitive Services. Once you have an account, Microsoft will
-provide you with an [API key](https://en.wikipedia.org/wiki/Application_programming_interface_key).
-This key will be listed under your subscriptions.
-
-After you've configured `{mscstexta4r}` with your API key, you will be able to
-call the Text Analytics REST API from R, up to your maximum number of
-transactions per month and per minute.
-
 ## Package Installation
 
-You can either install the latest **stable** version from CRAN:
+To use the `{mscstexta4r}` R package, you **MUST** have a valid [account](https://www.microsoft.com/cognitive-services/en-us/pricing)
+with Microsoft Cognitive Services. Once you have an account, Microsoft will
+provide you with an [API key](https://en.wikipedia.org/wiki/Application_programming_interface_key)
+listed under your subscriptions. After you've configured `{mscstexta4r}` with
+your API key, you will be able to call the Text Analytics REST API from R, up
+to your maximum number of transactions per month and per minute.
+
+You can install the latest **stable** version of `{mscstexta4r}` from CRAN as
+follows:
 
 ```{r eval=FALSE}
 if ("mscstexta4r" %in% installed.packages()[,"Package"] == FALSE) {
@@ -89,7 +87,7 @@ if ("mscstexta4r" %in% installed.packages()[,"Package"] == FALSE) {
 }
 ```
 
-Or, you can install the **development** version
+You can also install the **development** version using `{devtools}`:
 
 ```{r eval=FALSE}
 if ("mscstexta4r" %in% installed.packages()[,"Package"] == FALSE) {
@@ -342,7 +340,7 @@ tryCatch({
 
 ### Topic Detection (asynchronous mode)
 
-```{r}
+```{r eval = FALSE}
 # Load yelpChReviews100 text reviews
 load("./tests/testthat/data/yelpChineseRestaurantReviews100.rda")
 
@@ -380,6 +378,7 @@ tryCatch({
   geterrmessage()
 
 })
+# Same results as in synchronous mode
 ```
 
 ### Language Detection
