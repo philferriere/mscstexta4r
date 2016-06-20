@@ -476,7 +476,7 @@ docsLanguage &lt;-<span class="st"> </span><span class="kw">rep</span>(<span cla
 })
 <span class="co">#&gt; textatopics [https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/topics?]</span>
 <span class="co">#&gt; status: Succeeded</span>
-<span class="co">#&gt; operationId: 547a289d89cc41a79d357da75342c3ba</span>
+<span class="co">#&gt; operationId: 88593cea74e840d7818035b3e1173e93</span>
 <span class="co">#&gt; operationType: topics</span>
 <span class="co">#&gt; topics (first 20):</span>
 <span class="co">#&gt; </span>
@@ -569,9 +569,9 @@ docsLanguage &lt;-<span class="st"> </span><span class="kw">rep</span>(<span cla
 <h3>Language Detection</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">docsText =<span class="st"> </span><span class="kw">c</span>(
   <span class="st">&quot;The Louvre or the Louvre Museum is the world's largest museum.&quot;</span>,
-  <span class="st">&quot;Le musée du Louvre est un musée d'art et d'antiquités situé au centre de Paris.&quot;</span>,
+  <span class="st">&quot;Le musee du Louvre est un musee d'art et d'antiquites situe au centre de Paris.&quot;</span>,
   <span class="st">&quot;El Museo del Louvre es el museo nacional de Francia.&quot;</span>,
-  <span class="st">&quot;Il Museo del Louvre a Parigi, in Francia, è uno dei più celebri musei del mondo.&quot;</span>,
+  <span class="st">&quot;Il Museo del Louvre a Parigi, in Francia, e uno dei piu celebri musei del mondo.&quot;</span>,
   <span class="st">&quot;Der Louvre ist ein Museum in Paris.&quot;</span>
 )
 
@@ -598,15 +598,15 @@ docsLanguage &lt;-<span class="st"> </span><span class="kw">rep</span>(<span cla
 <span class="co">#&gt; Museum is the world's largest                              </span>
 <span class="co">#&gt;            museum.                                         </span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;   Le musée du Louvre est un   French       fr          1   </span>
-<span class="co">#&gt;  musée d'art et d'antiquités                               </span>
-<span class="co">#&gt;   situé au centre de Paris.                                </span>
+<span class="co">#&gt;   Le musee du Louvre est un   French       fr          1   </span>
+<span class="co">#&gt;  musee d'art et d'antiquites                               </span>
+<span class="co">#&gt;   situe au centre de Paris.                                </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;   El Museo del Louvre es el   Spanish      es          1   </span>
 <span class="co">#&gt;  museo nacional de Francia.                                </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Il Museo del Louvre a Parigi, Italian      it          1   </span>
-<span class="co">#&gt;   in Francia, è uno dei più                                </span>
+<span class="co">#&gt;   in Francia, e uno dei piu                                </span>
 <span class="co">#&gt;   celebri musei del mondo.                                 </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Der Louvre ist ein Museum in  German       de          1   </span>
@@ -683,7 +683,7 @@ docsLanguage &lt;-<span class="st"> </span><span class="kw">rep</span>(<span cla
 </div>
 <div id="credits" class="section level2">
 <h2>Credits</h2>
-<p>All Microsoft Cognitive Services components are Copyright © Microsoft.</p>
+<p>All Microsoft Cognitive Services components are Copyright (c) Microsoft.</p>
 <p>For great introductions to the underlying REST API, please refer to <a href="https://azure.microsoft.com/en-us/documentation/articles/cognitive-services-text-analytics-quick-start/">this</a> and <a href="https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/">that</a> link.</p>
 </div>
 <div id="related-microsoft-cognitive-services-packages" class="section level2">

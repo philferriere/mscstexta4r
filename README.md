@@ -367,7 +367,7 @@ tryCatch({
 })
 #> textatopics [https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/topics?]
 #> status: Succeeded
-#> operationId: 547a289d89cc41a79d357da75342c3ba
+#> operationId: 88593cea74e840d7818035b3e1173e93
 #> operationType: topics
 #> topics (first 20):
 #> 
@@ -466,9 +466,9 @@ tryCatch({
 ```r
 docsText = c(
   "The Louvre or the Louvre Museum is the world's largest museum.",
-  "Le musée du Louvre est un musée d'art et d'antiquités situé au centre de Paris.",
+  "Le musee du Louvre est un musee d'art et d'antiquites situe au centre de Paris.",
   "El Museo del Louvre es el museo nacional de Francia.",
-  "Il Museo del Louvre a Parigi, in Francia, è uno dei più celebri musei del mondo.",
+  "Il Museo del Louvre a Parigi, in Francia, e uno dei piu celebri musei del mondo.",
   "Der Louvre ist ein Museum in Paris."
 )
 
@@ -495,15 +495,15 @@ tryCatch({
 #> Museum is the world's largest                              
 #>            museum.                                         
 #> 
-#>   Le musée du Louvre est un   French       fr          1   
-#>  musée d'art et d'antiquités                               
-#>   situé au centre de Paris.                                
+#>   Le musee du Louvre est un   French       fr          1   
+#>  musee d'art et d'antiquites                               
+#>   situe au centre de Paris.                                
 #> 
 #>   El Museo del Louvre es el   Spanish      es          1   
 #>  museo nacional de Francia.                                
 #> 
 #> Il Museo del Louvre a Parigi, Italian      it          1   
-#>   in Francia, è uno dei più                                
+#>   in Francia, e uno dei piu                                
 #>   celebri musei del mondo.                                 
 #> 
 #> Der Louvre ist ein Museum in  German       de          1   
@@ -583,7 +583,7 @@ tryCatch({
 
 ## Credits
 
-All Microsoft Cognitive Services components are Copyright © Microsoft.
+All Microsoft Cognitive Services components are Copyright (c) Microsoft.
 
 For great introductions to the underlying REST API, please refer to [this](https://azure.microsoft.com/en-us/documentation/articles/cognitive-services-text-analytics-quick-start/)
 and [that](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/) link.
