@@ -1,7 +1,7 @@
 Package: mscstexta4r
 Type: Package
 Title: R Client for the Microsoft Cognitive Services Text Analytics REST API
-Version: 0.1.1
+Version: 0.1.2
 Authors@R: person("Phil", "Ferriere", email="pferriere@hotmail.com",
     role = c("aut", "cre"))
 Maintainer: Phil Ferriere <pferriere@hotmail.com>

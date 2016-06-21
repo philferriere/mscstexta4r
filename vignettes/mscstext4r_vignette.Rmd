@@ -47,6 +47,7 @@ topic is identified with a key phrase, which can be one or more related words.
 This API requires a minimum of 100 text records to be submitted, but is designed
 to detect topics across hundreds to thousands of records. The API is designed to
 work well for short, human-written text such as reviews and user feedback.
+English is the only language supported at this time.
 
 ### Language detection
 
@@ -222,7 +223,7 @@ textaSentiment(
 ```{r eval = FALSE}
 # Detect top topics in group of documents
 textaDetectTopics(
-  documents,                  # At least 100 documents
+  documents,                  # At least 100 documents (English only)
   stopWords = NULL,           # Stop word list (optional)
   topicsToExclude = NULL,     # Topics to exclude (optional)
   minDocumentsPerWord = NULL, # Threshold to exclude rare topics (optional)
@@ -311,7 +312,7 @@ tryCatch({
 
   # Detect top topics
   textaDetectTopics(
-    documents = yelpChReviews100, # At least 100 docs/sentences
+    documents = yelpChReviews100, # At least 100 docs/sentences (English only)
     stopWords = NULL,             # Stop word list (optional)
     topicsToExclude = NULL,       # Topics to exclude (optional)
     minDocumentsPerWord = NULL,   # Threshold to exclude rare topics (optional)
@@ -339,7 +340,7 @@ tryCatch({
 
   # Detect top topics
   operation <- textaDetectTopics(
-    documents = yelpChReviews100, # At least 100 docs/sentences
+    documents = yelpChReviews100, # At least 100 docs/sentences (English only)
     resultsPollInterval = 0L,     # Poll interval (in s, default: 30s, use 0L for async)
     verbose = TRUE                # If set to TRUE, print every poll status to stdout
   )

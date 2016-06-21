@@ -8,6 +8,8 @@
 #' documents. For best performance, limit each document to a short, human
 #' written text paragraph such as review, conversation or user feedback.
 #'
+#' English is the only language supported at this time.
+#'
 #' You can provide a list of stop words to control which words or documents are
 #' filtered out. You can also supply a list of topics to exclude from the
 #' response. Finally, you can also provide min/max word frequency count
@@ -47,7 +49,7 @@
 #'
 #' @param documents (character vector) Vector of sentences or documents on
 #' which to perform topic detection. At least 100 text documents must be
-#' submitted.
+#' submitted. English is the only language supported at this time.
 #'
 #' @param stopWords (character vector) Vector of stop words to ignore while
 #' performing topic detection (optional)
@@ -104,7 +106,7 @@
 #'
 #'    # Detect top topics in group of documents
 #'    topics <- textaDetectTopics(
-#'      documents,                  # At least 100 documents
+#'      documents,                  # At least 100 documents (English only)
 #'      stopWords = NULL,           # Stop word list (optional)
 #'      topicsToExclude = NULL,     # Topics to exclude (optional)
 #'      minDocumentsPerWord = NULL, # Threshold to exclude rare topics (optional)
@@ -172,7 +174,7 @@
 #' }
 
 textaDetectTopics <- function(
-  documents,                  # At least 100 documents
+  documents,                  # At least 100 documents (English only)
   stopWords = NULL,           # Stop word list (optional)
   topicsToExclude = NULL,     # Topics to exclude (optional)
   minDocumentsPerWord = NULL, # Threshold to exclude rare topics (optional)
