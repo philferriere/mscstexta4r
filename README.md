@@ -41,6 +41,7 @@ topic is identified with a key phrase, which can be one or more related words.
 This API requires a minimum of 100 text records to be submitted, but is designed
 to detect topics across hundreds to thousands of records. The API is designed to
 work well for short, human-written text such as reviews and user feedback.
+English is the only language supported at this time.
 
 ### Language detection
 
@@ -221,7 +222,7 @@ textaSentiment(
 ```r
 # Detect top topics in group of documents
 textaDetectTopics(
-  documents,                  # At least 100 documents
+  documents,                  # At least 100 documents (English only)
   stopWords = NULL,           # Stop word list (optional)
   topicsToExclude = NULL,     # Topics to exclude (optional)
   minDocumentsPerWord = NULL, # Threshold to exclude rare topics (optional)
@@ -349,7 +350,7 @@ tryCatch({
 
   # Detect top topics
   textaDetectTopics(
-    documents = yelpChReviews100, # At least 100 docs/sentences
+    documents = yelpChReviews100, # At least 100 docs/sentences (English only)
     stopWords = NULL,             # Stop word list (optional)
     topicsToExclude = NULL,       # Topics to exclude (optional)
     minDocumentsPerWord = NULL,   # Threshold to exclude rare topics (optional)
@@ -367,7 +368,7 @@ tryCatch({
 })
 #> textatopics [https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/topics?]
 #> status: Succeeded
-#> operationId: 88593cea74e840d7818035b3e1173e93
+#> operationId: aa3fae26e8aa4a828779ec475e6131da
 #> operationType: topics
 #> topics (first 20):
 #> 
@@ -427,7 +428,7 @@ tryCatch({
 
   # Detect top topics
   operation <- textaDetectTopics(
-    documents = yelpChReviews100, # At least 100 docs/sentences
+    documents = yelpChReviews100, # At least 100 docs/sentences (English only)
     resultsPollInterval = 0L      # Poll interval (in s, default: 30s, use 0L for async)
   )
 

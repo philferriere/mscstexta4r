@@ -9,7 +9,7 @@ The \code{textatopics} object exposes formatted results for the
 HTTP request:
 
 \itemize{
-  \item \code{status} the operation's current status ("NotStarted"|"Running"|"Succeeded")
+  \item \code{status} the operation's current status ("NotStarted"|"Running"|"Succeeded"|"Failed")
   \item \code{documents} a \code{data.frame} with the documents and a unique
   string ID for each
   \item \code{topics} a \code{data.frame} with the identified topics, a
