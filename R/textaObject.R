@@ -38,11 +38,24 @@ is.texta <- function(x) {
 #' @export
 print.texta <- function(x, ...) {
 
-  cat("texta [", x$request$url, "]\n", sep = "")
-  aintNoVT100NoMo <- panderOptions("table.split.table")
-  panderOptions("table.split.table", getOption("width"))
-  pandoc.table(x$results)
-  panderOptions("table.split.table", aintNoVT100NoMo)
+  if (exists("request", where = x)) {
+    if (!is.null(x$request)) {
+      if (exists("url", where = x$request)) {
+        if (!is.null(x$request$url)) {
+          cat("texta [", x$request$url, "]\n", sep = "")
+        }
+      }
+    }
+  }
+
+  if (exists("results", where = x)) {
+    if (!is.null(x$results)) {
+      aintNoVT100NoMo <- panderOptions("table.split.table")
+      panderOptions("table.split.table", getOption("width"))
+      pandoc.table(x$results)
+      panderOptions("table.split.table", aintNoVT100NoMo)
+    }
+  }
 
 }
 

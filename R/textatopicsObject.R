@@ -83,10 +83,34 @@ is.textatopics <- function(x) {
 #' @export
 print.textatopics <- function(x, ...) {
 
-  cat("textatopics [", x$originalRequest$url, "]\n", sep = "")
-  cat("status: ", x$status, "\n", sep = "")
-  cat("operationId: ", x$operationId, "\n", sep = "")
-  cat("operationType: ", x$operationType, "\n", sep = "")
+  if (exists("originalRequest", where = x)) {
+    if (!is.null(x$originalRequest)) {
+      if (exists("url", where = x$originalRequest)) {
+        if (!is.null(x$originalRequest$url)) {
+          cat("textatopics [", x$originalRequest$url, "]\n", sep = "")
+        }
+      }
+    }
+  }
+
+  if (exists("status", where = x)) {
+    if (!is.null(x$status)) {
+      cat("status: ", x$status, "\n", sep = "")
+    }
+  }
+
+  if (exists("operationId", where = x)) {
+    if (!is.null(x$operationId)) {
+      cat("operationId: ", x$operationId, "\n", sep = "")
+    }
+  }
+
+  if (exists("operationType", where = x)) {
+    if (!is.null(x$operationType)) {
+      cat("operationType: ", x$operationType, "\n", sep = "")
+    }
+  }
+
   if (x$status == "Succeeded") {
     if (exists("topics", where = x)) {
       if (!is.null(x$topics)) {
