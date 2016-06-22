@@ -368,7 +368,7 @@ tryCatch({
 })
 #> textatopics [https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/topics?]
 #> status: Succeeded
-#> operationId: aa3fae26e8aa4a828779ec475e6131da
+#> operationId: 8b864a9d5bf54b70b276387ee028aa21
 #> operationType: topics
 #> topics (first 20):
 #> 
